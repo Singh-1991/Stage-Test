@@ -39,7 +39,7 @@ pipeline {
             steps {
                 script {
                     checkout scm
-                    def tarball_name = "same_values.tar"                      
+                    def tarball_name = "same_values.tar"
                     def PWD = sh(script: "echo \$(pwd)", returnStdout: true).trim()
                     
                     // Untar the tarball.
@@ -148,7 +148,7 @@ pipeline {
                     def controlSha256 = "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy"
                     
                     // Checkout and create a new branch.
-                    //checkout scm
+                    checkout scm
                     //sh "git checkout -b temporary_branch"
                     
                     // Update versions_manifest file.
@@ -171,10 +171,11 @@ pipeline {
                     writeYaml file: 'versions_manifest.yml', data: manifest
                     
                     // Commit changes
-                    //sh "git add versions_manifest.yml"
-                    //sh "git commit -m 'Updated versions_manifest.yml with latest values.'"
+                    sh "git add versions_manifest.yml"
+                    sh "git commit -m 'Updated versions_manifest.yml with latest values.'"
                     
                     // Push changes to remote repository
+                    sh "git push origin ${env.BRANCH_NAME}"
                     //sh "git push origin temporary_branch"
                     
                     // Create a pull request
