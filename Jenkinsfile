@@ -152,7 +152,7 @@ pipeline {
                     //sh "git checkout -b temporary_branch"
                     
                     // Update versions_manifest file.
-                    def manifest = readYaml file: 'versions_manifest.yml'
+                    def manifest = readYaml file: "./versions_manifest.yml"
                     
                     // Assigning values to the versions_manifest file.
                     manifest.'version_info.ML_model.onprem_model.name' = onpremName
@@ -168,10 +168,10 @@ pipeline {
                     manifest.'version_info.ML_model.cloud_control_output.sha256' = controlSha256
                     
                     // Updating values to versions_manifest.yml file
-                    writeYaml file: 'versions_manifest.yml', data: manifest
+                    writeYaml file: "./versions_manifest.yml", data: manifest
                     
                     // Commit changes
-                    sh "git add versions_manifest.yml"
+                    sh "git add ./versions_manifest.yml"
                     sh "git commit -m 'Updated versions_manifest.yml with latest values.'"
                     
                     // Push changes to remote repository
