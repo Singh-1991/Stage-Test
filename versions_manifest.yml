@@ -1,0 +1,67 @@
+manifest_version: "1.0.0"
+project: "Hybrid Cloud ML"
+description: "Hybrid Cloud ML model development"
+repository:
+  name: "ml-model-development"
+  url: "https://bitbucket.com/domain/ml_model_development"
+  branch: "main"
+  commit: "5124ea2d6e6c302aed8ecb42023cee2c"
+  description: "Main repository containing the source code, and scripts for the project."
+parameter_file:
+  filename: "model_parameters_v11.json"
+  version: "1.1.0"
+  bitbucketpath: "https://bitbucket.com/domain/ml_model_development/model_parameters_v11.json"
+  description: "Model parameters used for training the model"
+version_info:
+  ML_model:
+    cloud_model:
+      name: "xgb_model_v1.1.json"
+      version: "1.1.0"
+      date: "2024-06-02"
+      path: "s3://s3-dev-use1-afa1/temp/output/sample_artifacts.tar"
+      md5: "5124ea2d6e6c302aed8ecb42023cee2c"
+      description: "The trained model file in the cloud environment."
+    onprem_model:
+      name: "onprem_model_001"
+      version: "1.1.0"
+      date: "2024-06-02"
+      path: "https://artifactory.tld/models/xgb_model_v1.1.json"
+      md5: "5124ea2d6e6c302aed8ecb42023cee2c"
+      description: "The trained model file moved to the on-premises environment."
+    cloud_control_output:
+      name: "control_output.json"
+      version: "1.1.0"
+      date: "2024-06-02"
+      path: "https://artifactory.tld/models/control_output_v1.1.json"
+      md5: "xxxxxxxxxxxxxxxxxxxxxx"
+      description: "The trained model file moved to the on-premises environment."
+  docker_image:
+    ecr_image:
+      name: "example_ecr_image"
+      tag: "v1.2.3"
+      repouri: "aws_account_id.dkr.ecr.region.amazonaws.com/ecr_image:v1.2.3"
+      description: "Docker image stored in Amazon ECR, used for running the model in the cloud."
+    artifactory_image:
+      name: "example_artifactory_image"
+      version: "1.2.0"
+      path: "https://artifactory.tld/models/xgb_model_image_v1.2.0"
+      description: "Docker image stored in Artifactory, used for running the model on-premises."
+  pip_packages:
+    pandas: "1.4.3"
+    numpy: "1.22.4"
+    scikit-learn: "1.0.2"
+    tensorflow: "2.9.1"
+    description: "List of required Python packages and their versions"
+metadata:
+  created_by: "PJ62557"
+  last_updated: "2024-05-20"
+  environment: "dev"
+  python_version: "3.9.0"
+  description: "Metadata providing details on the creation and environment of this manifest."
+change_log:
+  - version: "1.0.0"
+    date: "2024-06-02"
+    description:
+      - "Updated model hyperparameters."
+      - "Initial model training with baseline parameters."
+ 
