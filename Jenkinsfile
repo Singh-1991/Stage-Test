@@ -38,7 +38,7 @@ pipeline {
         stage('Validate Hash') {
             steps {
                 script {
-                    def tarball_name = same_values.tar                        
+                    def tarball_name = "mismatch_values.tar"                        
                     def PWD = sh(script: "echo \$(pwd)", returnStdout: true).trim()
                     
                     // Untar the tarball.
