@@ -38,7 +38,6 @@ pipeline {
         stage('Validate Hash') {
             steps {
                 script {
-                    checkout scm
                     def tarball_name = same_values.tar                        
                     def PWD = sh(script: "echo \$(pwd)", returnStdout: true).trim()
                     
